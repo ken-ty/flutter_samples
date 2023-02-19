@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+/// APIをコールできるページ
+class ApiCallPage extends StatefulWidget {
+  const ApiCallPage({super.key, required this.title});
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<ApiCallPage> createState() => _ApiCallPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _ApiCallPageState extends State<ApiCallPage> {
   /// ボタンを押された回数
   int _counter = 0;
 
@@ -23,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('You have pushed the button this many times:'),
+            const Text('APIを叩くぜッッッッ!!!!!'),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
