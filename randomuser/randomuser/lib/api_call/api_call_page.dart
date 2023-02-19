@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:randomuser/api_call/randomuser_api.dart';
 
 /// APIをコールできるページ
 class ApiCallPage extends StatefulWidget {
@@ -10,11 +11,19 @@ class ApiCallPage extends StatefulWidget {
 }
 
 class _ApiCallPageState extends State<ApiCallPage> {
-  /// ボタンを押された回数
-  int _counter = 0;
+  String _responseStatusCode = '404とか';
+  String _responseBodyString = 'レスポンスここに';
 
-  /// カウンター値を1上げる
-  void _incrementCounter() => setState(() => _counter++);
+  final randomuserApi = RandomuserApi();
+
+  /// APIコールを実行する
+  void _callApi() async {
+    final response = await randomuserApi.get();
+    setState(() {
+      _responseStatusCode = response.statusCode.toString();
+      _responseBodyString = response.body.toString();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,18 +33,25 @@ class _ApiCallPageState extends State<ApiCallPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('APIを叩くぜッッッッ!!!!!'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            Container(
+                padding: const EdgeInsets.all(10),
+                child: const Text('APIレスポンス')),
+            Container(
+              padding: const EdgeInsets.all(10),
+              color: Colors.grey.shade400,
+              child: Text(_responseStatusCode),
+            ),
+            Container(
+              padding: const EdgeInsets.all(10),
+              color: Colors.grey.shade400,
+              child: Text(_responseBodyString),
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        onPressed: _callApi,
+        child: const Icon(Icons.api),
       ),
     );
   }
