@@ -24,3 +24,6 @@ freezed で自動生成
 ```
 
 https://zenn.dev/sakusin/articles/b19e9a2c3829e0
+https://github.com/sakushin-udemy/riverpod_countup/tree/MVVM/lib/data
+
+https://docs.wantedly.dev/fields/apps/mobile-architecture

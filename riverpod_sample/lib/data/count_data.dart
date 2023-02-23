@@ -6,7 +6,9 @@ part 'count_data.g.dart';
 @freezed
 class CountData with _$CountData {
   const factory CountData({
-    required String title,
+    required int count,
+    required int countUp,
+    required int countDown,
   }) = _CountData;
 
   factory CountData.fromJson(Map<String, dynamic> json) =>

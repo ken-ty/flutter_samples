@@ -7,10 +7,14 @@ part of 'count_data.dart';
 // **************************************************************************
 
 _$_CountData _$$_CountDataFromJson(Map<String, dynamic> json) => _$_CountData(
-      title: json['title'] as String,
+      count: json['count'] as int,
+      countUp: json['countUp'] as int,
+      countDown: json['countDown'] as int,
     );
 
 Map<String, dynamic> _$$_CountDataToJson(_$_CountData instance) =>
     <String, dynamic>{
-      'title': instance.title,
+      'count': instance.count,
+      'countUp': instance.countUp,
+      'countDown': instance.countDown,
     };
