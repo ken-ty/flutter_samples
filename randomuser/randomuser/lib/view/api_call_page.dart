@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:randomuser/api_call/randomuser_api.dart';
+import 'package:randomuser/model/randomuser_api.dart';
 
 /// APIをコールできるページ
 class ApiCallPage extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:randomuser/api_call/api_call_page.dart';
+import 'package:randomuser/view/api_call_page.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
