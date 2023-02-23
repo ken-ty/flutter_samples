@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:randomuser/view/api_call_page.dart';
+import 'package:randomuser/view/home_page.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -9,7 +10,8 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'randomuser',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const ApiCallPage(title: 'randomuser sample'),
+      // home: const ApiCallPage(title: 'randomuser sample'),
+      home: const HomePage(),
     );
   }
 }
