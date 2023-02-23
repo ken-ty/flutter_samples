@@ -1,0 +1,38 @@
+' article_upload_usecase.pu
+
+' 参考 https://gist.github.com/kkeisuke/5e5776c7c4959e14d2e440e6a55e7153
+
+@startuml ECAMコーデ 記事アップロード ユースケース図
+title ECAMコーデ 記事アップロード ユースケース図
+left to right direction
+skinparam actorStyle awesome
+
+actor 店舗スタッフ as u
+
+(新規作成を選択) as (createArticle)
+(編集中の記事を選択) as (updateArticle)
+(記事作成) as (editArticle)
+(下書きとしてアップロード) as (saveAsDraft)
+(承認待ちとしてアップロード) as (saveAsReview)
+
+u --> (createArticle)
+(createArticle) --> (editArticle)
+
+u --> (updateArticle)
+(updateArticle) --> (editArticle)
+
+(editArticle) --> (saveAsDraft)
+(editArticle) --> (saveAsReview)
+
+(saveAsDraft) --> (updateArticle)
+
+note bottom of (updateArticle)
+編集可能な記事は
+下書き状態のみ
+end note
+
+note bottom of (saveAsReview)
+コンテンツ管理者が承認
+→ ECサイトに公開
+end note
+@enduml
