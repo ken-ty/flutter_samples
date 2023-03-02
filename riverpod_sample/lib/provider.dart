@@ -1,20 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-/// 定数
-
 /// タイトルstateのプロバイダ
-final titleProvider = Provider<String>((ref) {
-  return 'タイトル';
-});
+final titleProvider = Provider<String>((ref) => 'タイトル');
 
 /// メッセージstateのプロバイダ
-final messageProvider = Provider<String>((ref) {
-  return 'メッセージ';
-});
-
-/// 変数
+final messageProvider = Provider<String>((ref) => 'メッセージ');
 
 /// カウントstateのプロバイダ
-final countProvider = StateProvider<int>((ref) {
-  return 0;
-});
+final countProvider = StateProvider<int>((ref) => 0);
