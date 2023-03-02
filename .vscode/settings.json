@@ -2,6 +2,7 @@
     // スペルチェックのホワイトリスト
     "cSpell.words": [
         "audioplayers",
+        "czrc",
         "Marp",
         "Qiita",
         "randomuser",

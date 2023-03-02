@@ -6,9 +6,15 @@ Flutter を使ったお試しプロジェクト置き場
 node v18.13.0, npm 8.19.3, flutter 3.3.10, Android SDK 33.0.0, vscode にて開発.
 他の環境での動作は未確認.
 
-初回に, プロジェクトルートで以下を実行
+flutter の初期設定は済んでいることを想定している
+
+初回に以下を実行
 ```
-npm -i
+# flutter_samples/ 配下で行う
+npm i
+
+# flutter_samples/riverpod_sample/ 配下で行う
+flutter pub get
 ```
 
 ---
@@ -80,6 +86,7 @@ v18.13.0
 | ----------------- | --------------------------------------------- |
 | `flutter doctor`  | 環境に問題がないか確認できる. `-v` をつけると詳細表示 |
 | `flutter analyze` | lint 実行                                      |
+| `npx git-cz`      | `git commit` の代わりに利用する                  |
 
 
 ## ディレクトリ構成
@@ -88,16 +95,26 @@ v18.13.0
     - vscode のワークスペース設定
 - riverpod_sample
     - flutter プロジェクト
+- package.json
+    - node 開発時の利用外部ライブラリ管理
+- .czrc
+    - git-cz の設定
 
 ```
 % tree -La 1  
 .
+├── .czrc
 ├── .git
+├── .gitignore
+├── .nvmrc
 ├── .vscode
 ├── README.md
+├── node_modules
+├── package-lock.json
+├── package.json
 └── riverpod_sample
 
-3 directories, 1 file
+4 directories, 6 files
 ```
 
 ## ブランチ運用
