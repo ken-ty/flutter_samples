@@ -7,6 +7,8 @@ class Logic {
     countDown: 0,
   );
 
+  get countData => _countData;
+
   increase() {
     _countData = _countData.copyWith(
       count: _countData.count + 1,
@@ -18,6 +20,14 @@ class Logic {
     _countData = _countData.copyWith(
       count: _countData.count - 1,
       countDown: _countData.countDown + 1,
+    );
+  }
+
+  reset() {
+    _countData = CountData(
+      count: 0,
+      countUp: 0,
+      countDown: 0,
     );
   }
 }
