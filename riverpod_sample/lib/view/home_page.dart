@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_sample/provider.dart';
@@ -25,15 +26,35 @@ class _HomePageState extends ConsumerState<HomePage> {
                 style: Theme.of(context).textTheme.headline4,
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                FloatingActionButton(
+                  tooltip: '-1',
+                  onPressed: () => ref.read(countProvider.notifier).state++,
+                  child: const Icon(CupertinoIcons.minus),
+                ),
+                FloatingActionButton(
+                  tooltip: '+1',
+                  onPressed: () => ref.read(countProvider.notifier).state++,
+                  child: const Icon(CupertinoIcons.plus),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: const [
+                Text('0'),
+                Text('0'),
+              ],
+            ),
           ],
         ),
       ),
-      floatingActionButton: Consumer(
-        builder: (context, ref, child) => FloatingActionButton(
-          tooltip: '+1',
-          onPressed: () => ref.read(countProvider.notifier).state++,
-          child: const Icon(Icons.add),
-        ),
+      floatingActionButton: FloatingActionButton(
+        tooltip: 'リセット',
+        onPressed: () => ref.read(countProvider.notifier).state++,
+        child: const Icon(CupertinoIcons.refresh),
       ),
     );
   }
