@@ -11,4 +11,10 @@ final messageProvider = Provider<String>((ref) => 'メッセージ');
 final countProvider = StateProvider<int>((ref) => 0);
 
 /// カウントstateのプロバイダ
-final countDataProvider = StateProvider<CountData>((ref) => CountData(0, 0, 0));
+final countDataProvider = StateProvider<CountData>(
+  (ref) => CountData(
+    count: 0,
+    countUp: 0,
+    countDown: 0,
+  ),
+);

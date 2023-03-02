@@ -5,11 +5,11 @@ part 'count_data.g.dart';
 
 @freezed
 class CountData with _$CountData {
-  factory CountData(
-    int count,
-    int countUp,
-    int countDown,
-  ) = _CountData;
+  factory CountData({
+    required int count,
+    required int countDown,
+    required int countUp,
+  }) = _CountData;
 
   factory CountData.fromJson(Map<String, dynamic> json) => _$CountDataFromJson(json);
 }

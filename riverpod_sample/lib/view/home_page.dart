@@ -58,7 +58,11 @@ class _HomePageState extends ConsumerState<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         tooltip: 'リセット',
-        onPressed: () => ref.read(countDataProvider.notifier).state = CountData(0, 0, 0),
+        onPressed: () => ref.read(countDataProvider.notifier).state = CountData(
+          count: 0,
+          countUp: 0,
+          countDown: 0,
+        ),
         child: const Icon(CupertinoIcons.refresh),
       ),
     );

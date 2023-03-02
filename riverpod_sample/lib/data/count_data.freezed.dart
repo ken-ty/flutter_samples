@@ -21,8 +21,8 @@ CountData _$CountDataFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CountData {
   int get count => throw _privateConstructorUsedError;
-  int get countUp => throw _privateConstructorUsedError;
   int get countDown => throw _privateConstructorUsedError;
+  int get countUp => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $CountDataCopyWith<$Res> {
   factory $CountDataCopyWith(CountData value, $Res Function(CountData) then) =
       _$CountDataCopyWithImpl<$Res, CountData>;
   @useResult
-  $Res call({int count, int countUp, int countDown});
+  $Res call({int count, int countDown, int countUp});
 }
 
 /// @nodoc
@@ -52,21 +52,21 @@ class _$CountDataCopyWithImpl<$Res, $Val extends CountData>
   @override
   $Res call({
     Object? count = null,
-    Object? countUp = null,
     Object? countDown = null,
+    Object? countUp = null,
   }) {
     return _then(_value.copyWith(
       count: null == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
-      countUp: null == countUp
-          ? _value.countUp
-          : countUp // ignore: cast_nullable_to_non_nullable
-              as int,
       countDown: null == countDown
           ? _value.countDown
           : countDown // ignore: cast_nullable_to_non_nullable
+              as int,
+      countUp: null == countUp
+          ? _value.countUp
+          : countUp // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -79,7 +79,7 @@ abstract class _$$_CountDataCopyWith<$Res> implements $CountDataCopyWith<$Res> {
       __$$_CountDataCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int count, int countUp, int countDown});
+  $Res call({int count, int countDown, int countUp});
 }
 
 /// @nodoc
@@ -94,21 +94,21 @@ class __$$_CountDataCopyWithImpl<$Res>
   @override
   $Res call({
     Object? count = null,
-    Object? countUp = null,
     Object? countDown = null,
+    Object? countUp = null,
   }) {
     return _then(_$_CountData(
-      null == count
+      count: null == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
               as int,
-      null == countUp
-          ? _value.countUp
-          : countUp // ignore: cast_nullable_to_non_nullable
-              as int,
-      null == countDown
+      countDown: null == countDown
           ? _value.countDown
           : countDown // ignore: cast_nullable_to_non_nullable
+              as int,
+      countUp: null == countUp
+          ? _value.countUp
+          : countUp // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -117,7 +117,8 @@ class __$$_CountDataCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_CountData implements _CountData {
-  _$_CountData(this.count, this.countUp, this.countDown);
+  _$_CountData(
+      {required this.count, required this.countDown, required this.countUp});
 
   factory _$_CountData.fromJson(Map<String, dynamic> json) =>
       _$$_CountDataFromJson(json);
@@ -125,13 +126,13 @@ class _$_CountData implements _CountData {
   @override
   final int count;
   @override
-  final int countUp;
-  @override
   final int countDown;
+  @override
+  final int countUp;
 
   @override
   String toString() {
-    return 'CountData(count: $count, countUp: $countUp, countDown: $countDown)';
+    return 'CountData(count: $count, countDown: $countDown, countUp: $countUp)';
   }
 
   @override
@@ -140,14 +141,14 @@ class _$_CountData implements _CountData {
         (other.runtimeType == runtimeType &&
             other is _$_CountData &&
             (identical(other.count, count) || other.count == count) &&
-            (identical(other.countUp, countUp) || other.countUp == countUp) &&
             (identical(other.countDown, countDown) ||
-                other.countDown == countDown));
+                other.countDown == countDown) &&
+            (identical(other.countUp, countUp) || other.countUp == countUp));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, count, countUp, countDown);
+  int get hashCode => Object.hash(runtimeType, count, countDown, countUp);
 
   @JsonKey(ignore: true)
   @override
@@ -164,8 +165,10 @@ class _$_CountData implements _CountData {
 }
 
 abstract class _CountData implements CountData {
-  factory _CountData(final int count, final int countUp, final int countDown) =
-      _$_CountData;
+  factory _CountData(
+      {required final int count,
+      required final int countDown,
+      required final int countUp}) = _$_CountData;
 
   factory _CountData.fromJson(Map<String, dynamic> json) =
       _$_CountData.fromJson;
@@ -173,9 +176,9 @@ abstract class _CountData implements CountData {
   @override
   int get count;
   @override
-  int get countUp;
-  @override
   int get countDown;
+  @override
+  int get countUp;
   @override
   @JsonKey(ignore: true)
   _$$_CountDataCopyWith<_$_CountData> get copyWith =>
