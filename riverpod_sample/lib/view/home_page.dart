@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_sample/data/count_data.dart';
 import 'package:riverpod_sample/provider.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -22,7 +23,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             Text(ref.read(messageProvider)),
             Consumer(
               builder: (context, ref, child) => Text(
-                ref.watch(countProvider).toString(),
+                ref.watch(countDataProvider).count.toString(),
                 style: Theme.of(context).textTheme.headline4,
               ),
             ),
@@ -31,21 +32,25 @@ class _HomePageState extends ConsumerState<HomePage> {
               children: [
                 FloatingActionButton(
                   tooltip: '-1',
-                  onPressed: () => ref.read(countProvider.notifier).state++,
+                  onPressed: () => ref
+                      .read(countDataProvider.notifier)
+                      .update((state) => state.copyWith(count: state.count - 1, countDown: state.countDown + 1)),
                   child: const Icon(CupertinoIcons.minus),
                 ),
                 FloatingActionButton(
                   tooltip: '+1',
-                  onPressed: () => ref.read(countProvider.notifier).state++,
+                  onPressed: () => ref
+                      .read(countDataProvider.notifier)
+                      .update((state) => state.copyWith(count: state.count + 1, countUp: state.countUp + 1)),
                   child: const Icon(CupertinoIcons.plus),
                 ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const [
-                Text('0'),
-                Text('0'),
+              children: [
+                Text(ref.read(countDataProvider).countDown.toString()),
+                Text(ref.read(countDataProvider).countUp.toString()),
               ],
             ),
           ],
@@ -53,7 +58,7 @@ class _HomePageState extends ConsumerState<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         tooltip: 'リセット',
-        onPressed: () => ref.read(countProvider.notifier).state++,
+        onPressed: () => ref.read(countDataProvider.notifier).state = CountData(0, 0, 0),
         child: const Icon(CupertinoIcons.refresh),
       ),
     );
