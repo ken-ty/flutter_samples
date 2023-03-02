@@ -8,22 +8,26 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: Text(ref.watch(titleProvider))),
+      appBar: AppBar(
+          title: Text(
+        ref.read(titleProvider), // 定数(Provider)だから.state のようにしない
+      )),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              "数字",
+            Text(
+              "${ref.watch(countProvider)}", // 変数(StateProvider)
             ),
-            Text(ref.watch(messageProvider)),
+            Text(ref.read(messageProvider)),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
-          print("push!");
+          int now = ref.read(countProvider);
+          ref.read(countProvider.notifier).update((state) => state + 1);
         },
       ),
     );
