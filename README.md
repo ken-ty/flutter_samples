@@ -86,7 +86,7 @@ v18.13.0
 
 - .vscode
     - vscode のワークスペース設定
-- rierpod_sample
+- riverpod_sample
     - flutter プロジェクト
 
 ```
