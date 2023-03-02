@@ -1,22 +1,20 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_sample/data/count_data.dart';
 
-final titleProvider = Provider<String>(
-  (ref) => 'Flutter デモページ',
-);
+/// 定数
 
-final messageProvider = Provider<String>(
-  (ref) => 'You have pushed the button this many times:',
-);
+/// タイトルstateのプロバイダ
+final titleProvider = Provider<String>((ref) {
+  return 'タイトル';
+});
 
-final countProvider = StateProvider<int>(
-  (ref) => 0,
-);
+/// メッセージstateのプロバイダ
+final messageProvider = Provider<String>((ref) {
+  return 'メッセージ';
+});
 
-final countDataProvider = StateProvider<CountData>(
-  (ref) => const CountData(
-    count: 0,
-    countUp: 0,
-    countDown: 0,
-  ),
-);
+/// 変数
+
+/// カウントstateのプロバイダ
+final countProvider = StateProvider<int>((ref) {
+  return 0;
+});

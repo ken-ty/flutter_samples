@@ -1,25 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_sample/data/count_data.dart';
 import 'package:riverpod_sample/provider.dart';
 
-class HomePage extends ConsumerStatefulWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
-  ConsumerState<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends ConsumerState<HomePage> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: Text(ref.watch(titleProvider))),
+      appBar: AppBar(
+          title: Text(
+        ref.read(titleProvider), // 定数(Provider)だから.state のようにしない
+      )),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[Text("a")],
+          children: <Widget>[
+            Text(
+              "${ref.watch(countProvider)}", // 変数(StateProvider)
+            ),
+            Text(ref.read(messageProvider)),
+          ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          int now = ref.read(countProvider);
+          ref.read(countProvider.notifier).update((state) => state + 1);
+        },
       ),
     );
   }
