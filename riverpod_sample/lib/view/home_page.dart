@@ -12,7 +12,7 @@ class HomePage extends ConsumerWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[Text("a")],
+          children: <Widget>[Text(ref.watch(messageProvider))],
         ),
       ),
     );
