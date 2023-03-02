@@ -17,16 +17,19 @@ class HomePage extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "${ref.watch(countProvider)}", // 変数(StateProvider)
+              ref.read(messageProvider), // 定数(Provider)
             ),
-            Text(ref.read(messageProvider)),
+            Text(
+              ref.watch(countProvider).toString(), // 変数(StateProvider)
+              style: Theme.of(context).textTheme.headline4,
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
-          int now = ref.read(countProvider);
+          // ボタンタップで countProvider で管理するカウント値を更新
           ref.read(countProvider.notifier).update((state) => state + 1);
         },
       ),
