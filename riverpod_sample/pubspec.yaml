@@ -15,7 +15,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   # immutable な model作成用
   freezed_annotation: ^2.2.0
-  # ???
+  # 音声用
   audioplayers: ^3.0.1
   # 状態管理パッケージ
   flutter_riverpod: ^2.2.0
