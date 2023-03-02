@@ -1,5 +1,6 @@
 import 'package:riverpod_sample/data/count_data.dart';
 
+// [共通機能] xxLogic
 class Logic {
   CountData _countData = CountData(
     count: 0,
