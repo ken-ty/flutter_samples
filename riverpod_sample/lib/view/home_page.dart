@@ -12,8 +12,19 @@ class HomePage extends ConsumerWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[Text(ref.watch(messageProvider))],
+          children: <Widget>[
+            const Text(
+              "数字",
+            ),
+            Text(ref.watch(messageProvider)),
+          ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          print("push!");
+        },
       ),
     );
   }
