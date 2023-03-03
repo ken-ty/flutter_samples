@@ -1,9 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_sample/data/count_data.dart';
 import 'package:riverpod_sample/provider.dart';
+import 'package:riverpod_sample/view/home_page_view_model.dart';
 
+/// ホーム画面
+///
+/// ボタンタップをカウントします.
+///
+/// +ボタンタップで+1, -ボタンタップで-1します.
+/// リセットボタンタップでカウントをリセットします.
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
 
@@ -12,6 +18,17 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePageState extends ConsumerState<HomePage> {
+  // HomePageのロジックや状態を全部この中に閉じ込めて, HomePageクラスの関心をレイアウトに集中する
+  final ViewModel _viewModel = ViewModel();
+
+  @override
+  void initState() {
+    super.initState();
+
+    // viewModel に ref を渡して状態を参照できるようにする.
+    _viewModel.setRef(ref);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +40,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             Text(ref.read(messageProvider)),
             Consumer(
               builder: (context, ref, child) => Text(
-                ref.watch(countDataProvider).count.toString(),
+                _viewModel.count,
                 style: Theme.of(context).textTheme.headline4,
               ),
             ),
@@ -32,16 +49,12 @@ class _HomePageState extends ConsumerState<HomePage> {
               children: [
                 FloatingActionButton(
                   tooltip: '-1',
-                  onPressed: () => ref
-                      .read(countDataProvider.notifier)
-                      .update((state) => state.copyWith(count: state.count - 1, countDown: state.countDown + 1)),
+                  onPressed: () => _viewModel.onDecrease(),
                   child: const Icon(CupertinoIcons.minus),
                 ),
                 FloatingActionButton(
                   tooltip: '+1',
-                  onPressed: () => ref
-                      .read(countDataProvider.notifier)
-                      .update((state) => state.copyWith(count: state.count + 1, countUp: state.countUp + 1)),
+                  onPressed: () => _viewModel.onIncrease(),
                   child: const Icon(CupertinoIcons.plus),
                 ),
               ],
@@ -49,8 +62,8 @@ class _HomePageState extends ConsumerState<HomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text(ref.read(countDataProvider).countDown.toString()),
-                Text(ref.read(countDataProvider).countUp.toString()),
+                Text(_viewModel.countDown),
+                Text(_viewModel.countUp),
               ],
             ),
           ],
@@ -58,11 +71,7 @@ class _HomePageState extends ConsumerState<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         tooltip: 'リセット',
-        onPressed: () => ref.read(countDataProvider.notifier).state = CountData(
-          count: 0,
-          countUp: 0,
-          countDown: 0,
-        ),
+        onPressed: () => _viewModel.onReset(),
         child: const Icon(CupertinoIcons.refresh),
       ),
     );
