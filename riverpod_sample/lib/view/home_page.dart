@@ -38,11 +38,9 @@ class _HomePageState extends ConsumerState<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(ref.read(messageProvider)),
-            Consumer(
-              builder: (context, ref, child) => Text(
-                _viewModel.count,
-                style: Theme.of(context).textTheme.headline4,
-              ),
+            Text(
+              _viewModel.count,
+              style: Theme.of(context).textTheme.headline4,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
